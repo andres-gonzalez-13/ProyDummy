@@ -1,0 +1,17 @@
+#para python 3.9
+
+python3.9 -m ensurepip --default-pip
+python3.9 -m pip install virtualenv
+python3.9 -m virtualenv envfiles
+
+#activacion
+
+.\envfiles\Scripts\activate
+
+#paquetes
+pip install flask flask-login flask-mysqldb flask-WTF
+
+
+#ejecucion 
+
+python3 .\src\app.py
