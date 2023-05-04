@@ -19,7 +19,6 @@ def login():
     else:
         return render_template('auth/login.html')
 
-
 @app.route('/stock')
 def stock():
     return render_template('auth/stockpage.html')
