@@ -15,3 +15,14 @@ pip install flask flask-login flask-mysqldb flask-WTF
 #ejecucion 
 
 python3 .\src\app.py
+
+
+#para jenkins
+
+python3 -m venv venv
+
+venv\Scripts\activate.bat
+
+venv\Scripts\Activate.ps1
+
+pip install pytest
