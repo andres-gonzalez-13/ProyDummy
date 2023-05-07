@@ -1,10 +1,12 @@
 pipeline {
-  agent any
-  stages {
-    stage('hello') {
-      steps {
-        sh "hola mundo"
-      }
+    agent {
+        label 'windows'
     }
-  }
+    stages {
+        stage('Print Message') {
+            steps {
+                bat 'echo "¡Hola, mundo desde Jenkins en Windows!"'
+            }
+        }
+    }
 }
