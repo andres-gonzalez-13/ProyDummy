@@ -8,9 +8,7 @@ pipeline {
         }
         stage('connect database') {
             steps {
-                dir('src/tests') {
-                    sh 'python testDB1.py'
-                }
+                bat 'cd src\\tests && python testDB1.py'
             }
         }
     }
