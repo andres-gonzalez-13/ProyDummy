@@ -6,5 +6,12 @@ pipeline {
                 bat 'echo "¡Hola, mundo desde Jenkins en Windows!"'
             }
         }
+        stage('connect database') {
+            steps {
+                dir('src/tests') {
+                    sh 'python testDB1.py'
+                }
+            }
+        }
     }
 }
