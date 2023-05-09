@@ -13,7 +13,7 @@ pipeline {
         }
         stage('connect database') {
             steps {
-                bat 'python testDB1.py'
+                bat 'cd src\\tests && python testDB1.py'
             }
         }
     }
