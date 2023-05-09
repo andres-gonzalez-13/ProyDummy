@@ -16,5 +16,10 @@ pipeline {
                 bat 'cd src\\tests && python testDB1.py'
             }
         }
+        stage('start app.py') {
+            steps {
+                bat 'cd src && python app.py'
+            }
+        }
     }
 }
