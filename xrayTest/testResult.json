@@ -1,9 +1,4 @@
 {
-    "testExecutionKey": "TEST-xray-1",
-    "info": {
-        "summary": "Resumen de la ejecución de pruebas",
-        "description": "archivo base, no es correcto"
-    },
     "tests": [
         {
             "testKey": "TEST-1",
