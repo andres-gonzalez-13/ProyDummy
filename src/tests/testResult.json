@@ -1,0 +1,29 @@
+{
+    "testExecutionKey": "TEST-xray-1",
+    "info": {
+        "summary": "Resumen de la ejecución de pruebas",
+        "description": "archivo base, no es correcto"
+    },
+    "tests": [
+        {
+            "testKey": "TEST-1",
+            "start": "2021-05-01T10:00:00",
+            "finish": "2021-05-01T10:10:00",
+            "status": "PASS"
+        },
+        {
+            "testKey": "TEST-2",
+            "start": "2021-05-01T10:15:00",
+            "finish": "2021-05-01T10:20:00",
+            "status": "FAIL",
+            "comment": "Este test falló debido a un error en la entrada de datos."
+        },
+        {
+            "testKey": "TEST-3",
+            "start": "2021-05-01T10:25:00",
+            "finish": "2021-05-01T10:30:00",
+            "status": "BLOCKED",
+            "comment": "Este test está bloqueado debido a un problema en la infraestructura."
+        }
+    ]
+}
