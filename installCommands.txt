@@ -26,3 +26,5 @@ venv\Scripts\activate.bat
 venv\Scripts\Activate.ps1
 
 pip install pytest
+
+pip install requests
