@@ -7,4 +7,10 @@ class DatabaseUserRepository(UserRepository):
         # Lógica para consultar el usuario por email y contraseña en la base de datos
         # y devolver el objeto User correspondiente, o None si no se encuentra
         user = User(1, "John Doe", "password123", "john.doe@example.com")
+        #user = User(2, 'santi', password, email)
+        
+
+        if email == "":
+            user = None
+        
         return user
