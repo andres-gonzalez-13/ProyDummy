@@ -9,7 +9,8 @@ python3.9 -m virtualenv envfiles
 .\envfiles\Scripts\activate
 
 #paquetes
-pip install flask flask-login flask-mysqldb flask-WTF
+pip install mysql-connector-python
+#pip install flask flask-login flask-mysqldb flask-WTF
 
 
 #ejecucion 

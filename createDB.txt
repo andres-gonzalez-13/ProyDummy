@@ -1,0 +1,25 @@
+CREATE TABLE products (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  units INT NOT NULL
+);
+
+INSERT INTO products (name, price, units)
+VALUES ('Camiseta grande', 10.99, 100);
+
+INSERT INTO products (name, price, units)
+VALUES ('Camiseta pequeña', 9.99, 200);
+
+CREATE TABLE user (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL
+);
+
+INSERT INTO user (name, password, email)
+VALUES ('John Doe', 'password123', 'johndoe@example.com');
+
+INSERT INTO user (name, password, email)
+VALUES ('Andres santiago', 'mimimimi', 'andres.gonzalez04@uptc.edu.co');
