@@ -1,5 +1,5 @@
 from typing import Optional
-from interfaces.UserRepository import UserRepository
+from interfaces.UserInterface import UserInterface
 from models.User import User
 
 import mysql.connector
@@ -12,7 +12,7 @@ db = mysql.connector.connect(
   database="ahorcado"
 )
 
-class DatabaseUserRepository(UserRepository):
+class DatabaseUserAdapter(UserInterface):
     def get_user_by_email_and_password(self, email: str, password: str) -> Optional[User]:
         # Lógica para consultar el usuario por email y contraseña en la base de datos
         # y devolver el objeto User correspondiente, o None si no se encuentra

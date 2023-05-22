@@ -16,6 +16,7 @@ def login():
         if request.form['username'] == 'andres.gonzalez04@uptc.edu.co':
             flash('cafe')
             flash('azucar')
+            flash('galletas')
             return render_template('auth/catalog.html')
         else:
             flash('usuario no encontrado')
