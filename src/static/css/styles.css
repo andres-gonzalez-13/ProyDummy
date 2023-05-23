@@ -109,7 +109,7 @@ body {
 
 .p-3 {
   padding: 1rem!important;
-  background-color: #310707;
+  color: #ffff;
 }
 
 .col-6 {
@@ -132,8 +132,17 @@ body {
   margin-left: calc(-.5 * var(--bs-gutter-x));
 }
 
+.border-radius{
+  border-radius: 200rem;
+}
+
 .container, .container-sm {
   max-width: 540px;
+}
+
+.base-catalog {
+  padding-top: 80rem;
+  padding-bottom: 10rem;
 }
 
 .overflow-hidden {

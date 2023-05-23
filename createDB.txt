@@ -5,11 +5,28 @@ CREATE TABLE products (
   units INT NOT NULL
 );
 
-INSERT INTO products (name, price, units)
-VALUES ('Camiseta grande', 10.99, 100);
 
 INSERT INTO products (name, price, units)
-VALUES ('Camiseta pequeña', 9.99, 200);
+VALUES ('Computador Lenovo Ref. L490H', '2769990.00', '25');
+
+INSERT INTO products (name, price, units)
+VALUES ('Disco Duro Externo Wester Digital', 259500.00, 50);
+
+INSERT INTO products (name, price, units)
+VALUES ('Memoria Ram de 8GB Adata AD303-SGN', 230000.00, 50);
+
+INSERT INTO products (name, price, units)
+VALUES ('Televisor Sony 4K 75 pulgadas Ref. S673W', 4299999.00, 40);
+
+INSERT INTO products (name, price, units)
+VALUES ('Memoria Ram de 8GB Adata AD303-SGN', 230000.00, 50);
+
+INSERT INTO products (name, price, units)
+VALUES ('Computador Asus Ref. R454L 14 pulgadas', '2159999.00', '20');
+
+INSERT INTO products (name, price, units)
+VALUES ('Teclado Gamer T-Dagger T-TGK315 LUZ RGB', '239780.00', '30');
+
 
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT,
