@@ -38,8 +38,33 @@ def login():
         else:
             flash('usuario no encontrado')
             return render_template('auth/login.html')
+        
     else:
         return render_template('auth/login.html')
+
+
+@app.route('/createaccount', methods=['GET', 'POST'])
+def createaccount():
+    if request.method=='POST':
+        #print(request.form['username'])
+        #print(request.form['password'])
+        nameFormulary = request.form['usernames']
+        emailForm = request.form['mail']
+        passwordFormulary = request.form['password']
+
+        user_adapter = DatabaseUserAdapter()
+        user_service = UserService(user_adapter)
+        user = user_service.create_user('1',nameFormulary,passwordFormulary,emailForm)
+
+        if user is not None:
+            
+            return render_template('auth/login.html')
+        else:
+            flash('datos no validos')
+            return render_template('auth/createaccount.html')
+    else:
+        return render_template('auth/createaccount.html')
+
 
 @app.route('/stock')
 def stock():
