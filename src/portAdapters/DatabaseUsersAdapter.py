@@ -25,8 +25,10 @@ class DatabaseUserAdapter(UserInterface):
         else:
             cursor = db.cursor()
             # Ejecutar una consulta
-            query = "SELECT * FROM user WHERE email = %s"
-            cursor.execute(query, (email,))
+            query = "SELECT * FROM user WHERE email = %s AND password = %s"
+
+            values = (email, password)
+            cursor.execute(query, values)
             # Obtener los resultados
             result = cursor.fetchone()
             if result:
