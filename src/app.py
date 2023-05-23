@@ -1,4 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from portAdapters.DatabaseUsersAdapter import DatabaseUserAdapter
+from services.UserService import UserService
+
+from portAdapters.DatabaseProductAdapter import DatabaseProductAdapter
+from services.ProductService import ProductService
 
 from config import config
 
@@ -11,12 +16,24 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method=='POST':
-        print(request.form['username'])
-        print(request.form['password'])
-        if request.form['username'] == 'andres.gonzalez04@uptc.edu.co':
-            flash('cafe')
-            flash('azucar')
-            flash('galletas')
+        #print(request.form['username'])
+        #print(request.form['password'])
+        emailFormulary = request.form['username']
+        passwordFormulary = request.form['password']
+
+        user_adapter = DatabaseUserAdapter()
+        user_service = UserService(user_adapter)
+
+        user = user_service.get_user_by_email_and_password(emailFormulary, passwordFormulary)
+
+        if user is not None:
+            prod_adapter = DatabaseProductAdapter()
+            prod_service = ProductService(prod_adapter)
+
+            listProd = prod_service.get_available_products()
+
+            for prod in listProd:
+                flash(prod.name)
             return render_template('auth/catalog.html')
         else:
             flash('usuario no encontrado')

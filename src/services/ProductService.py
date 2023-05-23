@@ -1,9 +1,9 @@
-from interfaces.ProductRepository import ProductRepository
+from interfaces.ProductInterface import ProductInterface
 from typing import List
 from models.Product import Product
 
 class ProductService:
-    def __init__(self, product_repository: ProductRepository):
+    def __init__(self, product_repository: ProductInterface):
         self.product_repository = product_repository
 
     def get_available_products(self) -> List[Product]:
