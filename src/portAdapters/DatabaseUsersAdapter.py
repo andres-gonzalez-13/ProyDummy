@@ -34,3 +34,21 @@ class DatabaseUserAdapter(UserInterface):
             else:
                 user = None
         return user
+    
+    def create_user(self, id: str, name: str, password: str, email: str) -> User:
+        user = User(id,name,password,email)
+        cursor = db.cursor()
+        query = "INSERT INTO user (name, password, email) VALUES (%s, %s, %s)"
+        values = (name, password, email)
+        cursor.execute(query, values)
+
+        db.commit()
+
+        if cursor.lastrowid > 0:
+            print("El nuevo usuario se ha insertado correctamente. ID:", cursor.lastrowid)
+        else:
+            print("No se pudo insertar el nuevo usuario.")
+
+        # Cerrar la conexión a la base de datos
+        db.close()
+        return user
