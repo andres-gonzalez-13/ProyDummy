@@ -1,6 +1,6 @@
 from typing import Optional
-from interfaces.UserInterface import UserInterface
-from models.User import User
+from infrastructure.interfaces.UserInterface import UserInterface
+from domainBusines.User import User
 
 import mysql.connector
 

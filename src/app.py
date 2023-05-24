@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from portAdapters.DatabaseUsersAdapter import DatabaseUserAdapter
-from services.UserService import UserService
+from infrastructure.portAdapters.DatabaseUsersAdapter import DatabaseUserAdapter
+from infrastructure.services.UserService import UserService
 
-from portAdapters.DatabaseProductAdapter import DatabaseProductAdapter
-from services.ProductService import ProductService
+from infrastructure.portAdapters.DatabaseProductAdapter import DatabaseProductAdapter
+from infrastructure.services.ProductService import ProductService
 
 from config import config
 

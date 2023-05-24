@@ -1,8 +1,8 @@
-from portAdapters.DatabaseUsersAdapter import DatabaseUserAdapter
-from services.UserService import UserService
+from infrastructure.portAdapters.DatabaseUsersAdapter import DatabaseUserAdapter
+from infrastructure.services.UserService import UserService
 
-from portAdapters.DatabaseProductAdapter import DatabaseProductAdapter
-from services.ProductService import ProductService
+from infrastructure.portAdapters.DatabaseProductAdapter import DatabaseProductAdapter
+from infrastructure.services.ProductService import ProductService
 
 user_adapter = DatabaseUserAdapter()
 user_service = UserService(user_adapter)
@@ -30,10 +30,12 @@ for prod in listProd:
 user_adapter = DatabaseUserAdapter()
 user_service = UserService(user_adapter)
 
-user = user_service.create_user('1', 'mafe', 'correee', 'mafe@gmail.com')
+#user = user_service.create_user('1', 'mafe', 'correee', 'mafe@gmail.com')
 #user = user_service.get_user_by_email_and_password("andres.gonzalez04@uptc.edu.co", "mimimimi")
 
 if user is None:
     print("no existe el usuario")
 else:
     print("Nombre del usuario: " + user.name)
+
+prod_service.create_product("1", "cafe", 20.0, 100)

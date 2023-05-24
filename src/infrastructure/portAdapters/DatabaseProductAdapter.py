@@ -1,6 +1,6 @@
 from typing import List
-from interfaces.ProductInterface import ProductInterface
-from models.Product import Product
+from infrastructure.interfaces.ProductInterface import ProductInterface
+from domainBusines.Product import Product
 
 import mysql.connector
 
@@ -11,8 +11,6 @@ db = mysql.connector.connect(
   password="mimimimi",
   database="ahorcado"
 )
-
-
 
 class DatabaseProductAdapter(ProductInterface):
     def get_available_products(self) -> List[Product]:        
@@ -41,3 +39,24 @@ class DatabaseProductAdapter(ProductInterface):
         products.append(producto3)
 
         return products
+    
+    def create_product(self, id, name, price, units):
+
+      # Crear un objeto cursor para ejecutar las consultas
+      cursor = db.cursor()
+
+      # Inserción del nuevo producto
+      query = "INSERT INTO products (name, price, units) VALUES (%s, %s, %s)"
+      values = (name, price, units)
+      cursor.execute(query, values)
+
+      db.commit()
+
+      # Verificar si la inserción fue exitosa
+      if cursor.lastrowid > 0:
+          print("El nuevo producto se ha insertado correctamente.")
+      else:
+          print("No se pudo insertar el nuevo producto.")
+
+      # Cerrar la conexión a la base de datos
+      db.close()

@@ -1,6 +1,6 @@
-from interfaces.UserInterface import UserInterface
+from infrastructure.interfaces.UserInterface import UserInterface
 from typing import Optional
-from models.User import User
+from domainBusines.User import User
 
 class UserService:
     def __init__(self, user_interface: UserInterface):
