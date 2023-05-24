@@ -1,0 +1,52 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+<form class="form-signin" action="/createproduct" method="POST">
+    <img class="mb-4" src="{{ url_for('static', filename='images/4698590_basket_buy_ecommerce_online_shopping_icon.png') }}" alt="" width="72" height="57">
+    {% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+    <br />
+    {% for message in messages %}
+    <div class="alert alert-primary alert-dismissible" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% endwith %}
+    
+    <h1 class="h3 mb-3 fw-normal">Ingrese datos del producto</h1>
+
+    <div class="form-floating">
+        <input type="text" class="form-control" id="nameProd" name="nameProd">
+        <label for="floatingInput">Name prod</label>
+    </div>
+
+    <div class="form-floating">
+        <input type="number" class="form-control" id="price" name="price">
+        <label for="floatingInput">price</label>
+    </div>
+
+    <div class="form-floating">
+        <input type="number" class="form-control" id="units" name="units">
+        <label for="floatingInput">units</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+            <!--<input type="checkbox" value="remember-me"> Recordar-->
+        </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Crear</button>
+    <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
+</form>
+
+{% endblock %}

@@ -61,17 +61,61 @@ def createaccount():
             return render_template('auth/login.html')
         else:
             flash('datos no validos')
-            return render_template('auth/createaccount.html')
+            return render_template('auth/createproduct.html')
     else:
-        return render_template('auth/createaccount.html')
+        return render_template('auth/createproduct.html')
+    
+@app.route('/createproduct', methods=['GET', 'POST'])
+def createproduct():
+    if request.method=='POST':
+        #print(request.form['username'])
+        #print(request.form['password'])
+        nameFormulary = request.form['usernames']
+        emailForm = request.form['mail']
+        passwordFormulary = request.form['password']
+
+        user_adapter = DatabaseUserAdapter()
+        user_service = UserService(user_adapter)
+        user = user_service.create_user('1',nameFormulary,passwordFormulary,emailForm)
+
+        if user is not None:
+            
+            return render_template('auth/login.html')
+        else:
+            flash('datos no validos')
+            return render_template('auth/createproduct.html')
+    else:
+        return render_template('auth/createproduct.html')
 
 
-@app.route('/stock')
+@app.route('/stock', methods=['GET', 'POST'])
 def stock():
     return render_template('auth/stockpage.html')
 
-@app.route('/catalog')
+@app.route('/catalog', methods=['GET', 'POST'])
 def catalog():
+    if request.method=='POST':
+        print('comprado')
+        prod_adapter = DatabaseProductAdapter()
+        prod_service = ProductService(prod_adapter)
+        listProd = prod_service.get_available_products()
+
+        for prod in listProd:
+            flash(prod.name)
+        return render_template('auth/catalog.html')
+    else:
+        print('no comprado')
+        return render_template('auth/catalog.html')
+
+@app.route('/buy', methods=['GET', 'POST'])
+def buy():
+    prod_adapter = DatabaseProductAdapter()
+    prod_service = ProductService(prod_adapter)
+    listProd = prod_service.get_available_products()
+
+    for prod in listProd:
+        flash(prod.name)
+    print('comprado')
     return render_template('auth/catalog.html')
 
 if __name__ == '__main__':

@@ -8,29 +8,33 @@
 
 {% block body %}
 <div class="container overflow-hidden text-center base-catalog">
-    <div class="row gy-5 border-radius">
-        
-                {% with messages = get_flashed_messages() %}
+    <form class="row gy-5 border-radius" action="/catalog" method="POST">
+
+        {% with messages = get_flashed_messages() %}
 
         {% if messages %}
         <br />
         {% for message in messages %}
-            <div class="col-6">
-        
-                <div class="p-3">{{ message }}</div>
-                <div class="card" style="width: 15rem;">
-                    <img src="{{ url_for('static', filename='images/tagimage.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">{{ message }}</p>
-                    </div>
+        <div class="col-6">
+            <div class="p-3">{{ message }}</div>
+            <div class="card" style="width: 15rem;">
+                <img src="{{ url_for('static', filename='images/tagimage.png') }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">{{ message }}</p>
+                    <input type="submit" value="Comprar" name="action1"/>
                 </div>
             </div>
-        
+        </div>
+
         {% endfor %}
         {% endif %}
 
         {% endwith %}
-    </div>
+    </form>
+
+    <form action="/createproduct" method="GET">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">crear</button>
+    </form>
 </div>
 
 {% endblock %}
