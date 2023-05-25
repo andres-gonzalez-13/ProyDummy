@@ -7,29 +7,43 @@
 {% endblock %}
 
 {% block body %}
-<div class="container overflow-hidden text-center base-catalog">
-    <form class="row gy-5 border-radius" action="/catalog" method="POST">
+<div class="center">
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <br />
+    {% for message in messages %}
+    <form action="/carttopay" method="GET">
+    <button class="cart" type="submit">
+        <div class="cart-icono">
+            <img src="{{ url_for('static', filename='images/cart.png') }}" alt="Icono">
+        </div>
+        <!-- Texto del componente -->
+        <div>{{ message }}</div>
+    </button>
+    </form>
 
-        {% with messages = get_flashed_messages() %}
 
-        {% if messages %}
-        <br />
-        {% for message in messages %}
+    {% endfor %}
+    {% endif %}
+
+    {% endwith %}
+    <form class="row gy-5 border-radius" action="/buy" method="POST">
+        {% for product in data %}
         <div class="col-6">
-            <div class="p-3">{{ message }}</div>
+            <!--<div class="p-3">{{ product }}</div>-->
             <div class="card" style="width: 15rem;">
                 <img src="{{ url_for('static', filename='images/tagimage.png') }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">{{ message }}</p>
-                    <input type="submit" value="Comprar" name="action1"/>
+                    <p class="card-text">{{ product }}</p>
+                    <button type="submit" value={{ product.id }} name="idProd"> Comprar</button>
+                    <!--<input type="submit" value={{ product.id }} name="idProd" />-->
                 </div>
             </div>
         </div>
-
         {% endfor %}
-        {% endif %}
 
-        {% endwith %}
+
     </form>
 
     <form action="/createproduct" method="GET">

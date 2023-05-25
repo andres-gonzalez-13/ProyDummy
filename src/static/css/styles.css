@@ -155,6 +155,13 @@ body {
   color: var(--bs-card-color);
 }
 
+.center {
+  border: 1px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
 .card {
   --bs-card-spacer-y: 1rem;
   --bs-card-spacer-x: 1rem;
@@ -186,4 +193,50 @@ body {
   background-clip: border-box;
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
+}
+
+/* Estilos del componente */
+.cart {
+  background-color: green; /* Fondo verde */
+  border: 1px solid lightgray; /* Borde claro */
+  border-radius: 10px; /* Borde redondo */
+  color: white; /* Letras blancas */
+  padding: 10px; /* Espaciado interno */
+  font-size: 20px; /* Fuente grande */
+  display: flex; /* Activa el modelo de caja flexible */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.cart-icono {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilos del icono (ejemplo) */
+.cart-icono img {
+  width: 20px; /* Tamaño del icono */
+  height: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }

@@ -33,12 +33,6 @@ class DatabaseProductAdapter(ProductInterface):
                 producto1 = Product(result[0], result[1], result[2], result[3])
                 products.append(producto1)
 
-        producto2 = Product(2, "Pantalón", 39.99, 5)
-        products.append(producto2)
-
-        producto3 = Product(3, "Zapatos", 59.99, 3)
-        products.append(producto3)
-
         return products
     
     def create_product(self, id, name, price, units):
@@ -64,5 +58,21 @@ class DatabaseProductAdapter(ProductInterface):
     
     def get_product_by_id(self, id: int) -> Optional[Product]:
         prod = Product(0, 'cafe', 20, 100)
+
+        if id == 0 or id is None:
+            prod = None
+        else:
+            cursor = db.cursor()
+            # Ejecutar una consulta
+            query = "SELECT * FROM products WHERE id = %s"
+
+            values = (id)
+            cursor.execute(query, (id,))
+            # Obtener los resultados
+            result = cursor.fetchone()
+            if result:
+                prod = Product(result[0], result[1], result[2], result[3])
+            else:
+                print('no se encontro la id: ' + str(id))
     
         return prod

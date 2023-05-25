@@ -40,7 +40,9 @@ else:
 
 #prod_service.create_product("1", "cafe", 20.0, 100)
 
-prod = prod_service.get_product_by_id(1)
-
-print(' el prod de id 1 es: ' + prod.name)
+prod = prod_service.get_product_by_id(2)
+if prod is not None:
+    print(' el prod de id 1 es: ' + prod.name)
+else:
+    print('no existe')
 

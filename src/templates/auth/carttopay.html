@@ -1,0 +1,45 @@
+{% extends './base.html' %}
+
+{% block title %}cart to pay{% endblock %}
+
+{% block customCSS %}
+{% endblock %}
+
+{% block body %}
+<h1>Productos a pagar</h1>
+<form action="/pagar" method="POST">
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Unidades</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for product in data %}
+    <tr>
+        <td>{{ product.nameProduct }}</td>
+        <td>{{ product.units }}</td>
+    </tr>
+
+    {% endfor %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <br />
+    {% for message in messages %}
+    <tr>
+        <td>{{ message }}</td>
+    </tr>
+
+    {% endfor %}
+    {% endif %}
+
+    {% endwith %}
+</tbody>
+    </table>
+    <button type="submit">Pagar</button>
+</form>
+
+{% endblock %}
