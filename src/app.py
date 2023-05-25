@@ -5,7 +5,14 @@ from infrastructure.services.UserService import UserService
 from infrastructure.portAdapters.DatabaseProductAdapter import DatabaseProductAdapter
 from infrastructure.services.ProductService import ProductService
 
+from datetime import date
+
+from domainBusines.Cart import Cart
+
 from config import config
+
+cart = Cart(0,0, date.today())
+items = []
 
 app = Flask(__name__)
 
@@ -38,7 +45,7 @@ def login():
         else:
             flash('usuario no encontrado')
             return render_template('auth/login.html')
-        
+            
     else:
         return render_template('auth/login.html')
 
@@ -61,10 +68,30 @@ def createaccount():
             return render_template('auth/login.html')
         else:
             flash('datos no validos')
-            return render_template('auth/createproduct.html')
+            return render_template('auth/createaccount.html')
     else:
-        return render_template('auth/createproduct.html')
-    
+        return render_template('auth/createaccount.html')
+
+
+@app.route('/stock')
+def stock():
+    return render_template('auth/stockpage.html')
+
+@app.route('/catalog', methods=['GET', 'POST'])
+def catalog():
+    if request.method=='POST':
+        print('comprado')
+        prod_adapter = DatabaseProductAdapter()
+        prod_service = ProductService(prod_adapter)
+        listProd = prod_service.get_available_products()
+
+        for prod in listProd:
+            flash(prod.name)
+        return render_template('auth/catalog.html')
+    else:
+        print('no comprado')
+        return render_template('auth/catalog.html')
+
 @app.route('/createproduct', methods=['GET', 'POST'])
 def createproduct():
     if request.method=='POST':
@@ -86,27 +113,7 @@ def createproduct():
             return render_template('auth/createproduct.html')
     else:
         return render_template('auth/createproduct.html')
-
-
-@app.route('/stock', methods=['GET', 'POST'])
-def stock():
-    return render_template('auth/stockpage.html')
-
-@app.route('/catalog', methods=['GET', 'POST'])
-def catalog():
-    if request.method=='POST':
-        print('comprado')
-        prod_adapter = DatabaseProductAdapter()
-        prod_service = ProductService(prod_adapter)
-        listProd = prod_service.get_available_products()
-
-        for prod in listProd:
-            flash(prod.name)
-        return render_template('auth/catalog.html')
-    else:
-        print('no comprado')
-        return render_template('auth/catalog.html')
-
+    
 @app.route('/buy', methods=['GET', 'POST'])
 def buy():
     prod_adapter = DatabaseProductAdapter()
@@ -117,6 +124,16 @@ def buy():
         flash(prod.name)
     print('comprado')
     return render_template('auth/catalog.html')
+
+@app.route('/product/<nameProd>')
+def product(nameProd):
+    data = {
+        'id': 1,
+        'name': 'cafe',
+        'price': 20,
+        'units': 100
+    }
+    return render_template('auth/product.html', data=data)
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])

@@ -29,3 +29,5 @@ venv\Scripts\Activate.ps1
 pip install pytest
 
 pip install requests
+
+pip install bcrypt

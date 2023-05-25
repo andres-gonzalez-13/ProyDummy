@@ -1,6 +1,7 @@
 from typing import List
 from infrastructure.interfaces.ProductInterface import ProductInterface
 from domainBusines.Product import Product
+from typing import Optional
 
 import mysql.connector
 
@@ -60,3 +61,8 @@ class DatabaseProductAdapter(ProductInterface):
 
       # Cerrar la conexión a la base de datos
       db.close()
+    
+    def get_product_by_id(self, id: int) -> Optional[Product]:
+        prod = Product(0, 'cafe', 20, 100)
+    
+        return prod

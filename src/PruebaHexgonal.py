@@ -38,4 +38,9 @@ if user is None:
 else:
     print("Nombre del usuario: " + user.name)
 
-prod_service.create_product("1", "cafe", 20.0, 100)
+#prod_service.create_product("1", "cafe", 20.0, 100)
+
+prod = prod_service.get_product_by_id(1)
+
+print(' el prod de id 1 es: ' + prod.name)
+

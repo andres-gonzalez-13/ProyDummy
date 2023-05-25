@@ -12,6 +12,15 @@ db = mysql.connector.connect(
   database="ahorcado"
 )
 
+import bcrypt
+
+def encriptar_password(password):
+    hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    return hashed_password
+
+def verificar_password(password, hashed_password):
+    return bcrypt.checkpw(password.encode(), hashed_password)
+
 class DatabaseUserAdapter(UserInterface):
     def get_user_by_email_and_password(self, email: str, password: str) -> Optional[User]:
         # Lógica para consultar el usuario por email y contraseña en la base de datos
